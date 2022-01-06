@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InterfaceComponent } from './interface/interface.component';
+import { CrudComponent } from './components/crud/crud.component';
+import { InteractionComponent } from './components/interaction/interaction.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InterfaceComponent
+    CrudComponent,
+    InteractionComponent
   ],
   imports: [
     BrowserModule,
