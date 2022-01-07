@@ -1,10 +1,8 @@
 export class Format {
-    public id: number;
     public firstAttribute: string;
     public secondAttribute: string;
 
-    constructor(id: number, firstAttribute: string, secondAttribute: string) {
-        this.id = id;
+    constructor(firstAttribute: string, secondAttribute: string) {
         this.firstAttribute = firstAttribute;
         this.secondAttribute = secondAttribute;
     }
