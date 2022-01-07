@@ -1,5 +1,5 @@
 export class Format {
-    public id: number;
+    public id?: number;
     public firstAttribute: string;
     public secondAttribute: string;
 

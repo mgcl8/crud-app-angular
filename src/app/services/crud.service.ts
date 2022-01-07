@@ -8,15 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class CrudService {
 
-  api = 'localhost:3000'
+  api = 'localhost:3000';
+  private items: Format[] = [];
 
   constructor(
     private http: HttpClient,
   ) { }
 
-  createItem(item: Format) {
+  addItem(item: Format) {
+    this.items.push(item);
     const url = `${this.api}/post`
-    return this.http.put<Format>(url, item)
+    return this.http.put<Format>(url, this.items)
     .subscribe(response => {
       console.log(response)
     })
@@ -27,8 +29,12 @@ export class CrudService {
     return this.http.get<Format>(url)
   }
 
-  updateItem(item: Format){
-    const url = `${this.api}/update`
+  readItem(id: number){
+    const url = `${this.api}/${id}`
+  }
+
+  updateItem(id: number, item: Format){
+    const url = `${this.api}/${id}`;
     return this.http.put<Format>(url, item)
     .subscribe(response => {
       console.log(response)

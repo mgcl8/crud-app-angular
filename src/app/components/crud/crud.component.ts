@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Format } from 'src/app/models/format.model';
+import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
   selector: 'app-crud',
@@ -7,9 +9,63 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrudComponent implements OnInit {
 
-  constructor() { }
+  attributeOne='';
+  attributeTwo='';
+
+  item: Format = {
+    firstAttribute: '',
+    secondAttribute: ''
+  };
+
+  constructor(private crud: CrudService) { }
 
   ngOnInit(): void {
+    this.crud.readItems();
   }
+
+  create (firstValue: string, secondValue: string) {
+    this.attributeOne = firstValue;
+    this.attributeTwo = secondValue;
+
+    const singleItem = {
+      firstAttribute: firstValue,
+      secondAttribute: secondValue
+    }
+    this.crud.addItem(singleItem)
+  }
+
+  reload() {
+    this.crud.readItems();
+  }
+
+  readOne(id: number) {
+    this.crud.readItem(id);
+  }
+
+  update(id:number, firstValue: string, secondValue: string) {
+    this.attributeOne = firstValue;
+    this.attributeTwo = secondValue;
+
+    const singleItem = {
+      id: id,
+      firstAttribute: firstValue,
+      secondAttribute: secondValue
+    }
+    
+    this.crud.updateItem(singleItem.id, singleItem);
+  }
+
+  delete(id: number) {
+    this.crud.deleteItem(id);
+  }
+
+
+
+  // createItem(firstAttribute: string, secondAttribute: string) {
+  //   this.newItem.firstAttribute = firstAttribute;
+  //   this.newItem.secondAttribute = secondAttribute;
+    
+  //   this.create(newItem);
+  // }
 // create read update and delete here
 }
