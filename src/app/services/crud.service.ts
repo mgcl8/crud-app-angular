@@ -29,12 +29,12 @@ export class CrudService {
     return this.http.get<Format[]>(url)
   }
 
-  readItem(id: number): Observable<Format> {
+  readItem(id: string): Observable<Format> {
     const url = `${this.api}/${id}`;
     return this.http.get<Format>(url);
   }
 
-  updateItem(id: number, item: Format){
+  updateItem(id: string, item: Format){
     const url = `${this.api}/${id}`;
     return this.http.put<Format>(url, item)
     .subscribe(response => {
@@ -43,7 +43,7 @@ export class CrudService {
 
   }
 
-  deleteItem(id: number): Observable<unknown> {
+  deleteItem(id: string): Observable<unknown> {
     const url = `${this.api}/delete/${id}`
     return this.http.delete(url)
   }

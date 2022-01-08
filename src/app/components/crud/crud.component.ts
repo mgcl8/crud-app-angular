@@ -45,7 +45,7 @@ export class CrudComponent implements OnInit {
       )
   }
 
-  readOne(id: number) {
+  readOne(id: string) {
     this.crud.readItem(id)
       .subscribe(
         data => {
@@ -54,7 +54,8 @@ export class CrudComponent implements OnInit {
       )
   }
 
-  update(id:number, firstValue: string, secondValue: string) {
+
+  update(id: string, firstValue: string, secondValue: string) {
     this.attributeOne = firstValue;
     this.attributeTwo = secondValue;
 
@@ -67,7 +68,7 @@ export class CrudComponent implements OnInit {
     this.crud.updateItem(singleItem.id, singleItem);
   }
 
-  delete(id: number) {
+  delete(id: string) {
     this.crud.deleteItem(id);
   }
 
