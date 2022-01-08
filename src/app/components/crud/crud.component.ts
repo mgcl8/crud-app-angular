@@ -38,20 +38,20 @@ export class CrudComponent implements OnInit {
 
   reload() {
     this.crud.readItems()
-      .subscribe(
-        data => {
-          this.items = data
-        }
-      )
+      .subscribe({
+        next: data => {this.items = data},
+        error: error => console.log(error),
+        complete: () => console.log('loading complete!')
+      })
   }
 
   readOne(id: string) {
     this.crud.readItem(id)
-      .subscribe(
-        data => {
-          this.item = data  
-        }
-      )
+      .subscribe({
+        next: data => {this.item = data},
+        error: error => console.log(error),
+        complete: () => console.log('item read!')
+      })
   }
 
 
