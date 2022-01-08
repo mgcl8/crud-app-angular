@@ -16,11 +16,12 @@ export class CrudComponent implements OnInit {
     firstAttribute: '',
     secondAttribute: ''
   };
+  items?: Format[];
 
   constructor(private crud: CrudService) { }
 
   ngOnInit(): void {
-    this.crud.readItems();
+    this.reload();
   }
 
   create (firstValue: string, secondValue: string) {
@@ -34,12 +35,23 @@ export class CrudComponent implements OnInit {
     this.crud.addItem(singleItem)
   }
 
+
   reload() {
-    this.crud.readItems();
+    this.crud.readItems()
+      .subscribe(
+        data => {
+          this.items = data
+        }
+      )
   }
 
   readOne(id: number) {
-    this.crud.readItem(id);
+    this.crud.readItem(id)
+      .subscribe(
+        data => {
+          this.item = data  
+        }
+      )
   }
 
   update(id:number, firstValue: string, secondValue: string) {

@@ -24,13 +24,14 @@ export class CrudService {
     })
   }
 
-  readItems() {
+  readItems(): Observable<Format[]> {
     const url = `${this.api}/get`
-    return this.http.get<Format>(url)
+    return this.http.get<Format[]>(url)
   }
 
-  readItem(id: number){
-    const url = `${this.api}/${id}`
+  readItem(id: number): Observable<Format> {
+    const url = `${this.api}/${id}`;
+    return this.http.get<Format>(url);
   }
 
   updateItem(id: number, item: Format){

@@ -1,1 +1,49 @@
-<p>crud works!</p>
+<div class="container">
+    <h2>List of all items:</h2>
+    <ul class="list-group">
+        <li 
+        class="list-group-item"
+        *ngFor = "let item of items; let i = index"
+        >
+        <p>{{item.firstAttribute}}</p>
+        <p>{{item.secondAttribute}}</p>
+        </li>
+    </ul>
+    <button (click)="reload()">Reload list</button>
+</div> 
+<hr>
+<div class="container">
+    <h2>Get a single item:</h2>
+    <p>Type in id of item</p>
+    <input type="text" #id>
+    <button (click)="readOne(id.value)">load item</button>
+    <p>your item</p>
+    <p>{{item.firstAttribute}}</p>
+    <p>{{secondAttribute}}</p>
+</div> 
+<hr>
+<div class="container">
+    <h2>Create a new item:</h2>
+    <p>first Attribute</p>
+    <input type="text" #valueOne>
+    <p>second Attribute</p>
+    <input type="text" #valueTwo>
+    <button (click)="create(valueOne.value, valueTwo.value)">Create item</button>
+</div> 
+<hr>
+<div class="container">
+    <h2>delete an item:</h2>
+    <p>id of item</p>
+    <input type="text" #deleteItem>
+    <button (click)="delete(deleteItem.value)">delete item</button>
+</div>
+<hr>
+<div class="container">
+    <h2>Edit item:</h2>
+    <p>first type in which id the item has</p>
+    <input type="text" #editId>
+    <p>than value one and value two</p>
+    <input type="text" #editValueOne>
+    <input type="text" #editValueTwo>
+    <button (click)="update(id.value, editValueOne.value, editValueTwo.value)">Save change</button>
+</div>
